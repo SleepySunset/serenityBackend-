@@ -1,5 +1,7 @@
-package org.example;
+package org.example.controller;
 
+import org.example.model.Product;
+import org.example.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -58,3 +60,4 @@ public class ProductController {
         return repo.findById(id).map(Product::getImage).orElse(null);
     }
 }
+

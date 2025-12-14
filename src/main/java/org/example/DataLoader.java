@@ -1,5 +1,9 @@
 package org.example;
 
+import org.example.model.Product;
+import org.example.model.User;
+import org.example.repository.ProductRepository;
+import org.example.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.ClassPathResource;
@@ -11,8 +15,16 @@ import java.nio.file.Files;
 public class DataLoader {
 
     @Bean
-    CommandLineRunner loadData(ProductRepository repo) {
+    CommandLineRunner loadData(ProductRepository productRepo, UserRepository userRepo) {
         return args -> {
+
+            User user1 = new User("admin@serenity.com", "admin123", "Administrador");
+            User user2 = new User("cliente@serenity.com", "cliente123", "Cliente Principal");
+            User user3 = new User("test@example.com", "test123", "Usuario de Prueba");
+
+            userRepo.save(user1);
+            userRepo.save(user2);
+            userRepo.save(user3);
 
             Product p1 = new Product("Brocha angular para cejas", "Brocha precisa para definir y rellenar cejas. Cerdas sintéticas de alta calidad.", 22.900);
             p1.setImage(Files.readAllBytes(new ClassPathResource("static/brochas.jpg").getFile().toPath()));
@@ -29,12 +41,11 @@ public class DataLoader {
             Product p5 = new Product("Lip Oil Rose", "Aceite labial hidratante con brillo suave y aroma a rosas.", 24.500);
             p5.setImage(Files.readAllBytes(new ClassPathResource("static/aceite-labial.jpg").getFile().toPath()));
 
-
-            repo.save(p1);
-            repo.save(p2);
-            repo.save(p3);
-            repo.save(p4);
-            repo.save(p5);
+            productRepo.save(p1);
+            productRepo.save(p2);
+            productRepo.save(p3);
+            productRepo.save(p4);
+            productRepo.save(p5);
         };
     }
 }
