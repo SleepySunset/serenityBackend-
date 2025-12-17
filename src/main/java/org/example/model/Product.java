@@ -1,23 +1,22 @@
 package org.example.model;
 
-import jakarta.persistence.*;
-
-@Entity
 public class Product {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String title;
     private String description;
     private double price;
-
-    @Lob
-    @Column(columnDefinition = "BLOB")
-    private byte[] image;
+    private String imageFileName;
 
     public Product() {
+    }
+
+    public Product(Long id, String title, String description, double price, String imageFileName) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.imageFileName = imageFileName;
     }
 
     public Product(String title, String description, double price) {
@@ -58,13 +57,12 @@ public class Product {
         this.price = price;
     }
 
-    public byte[] getImage() {
-        return image;
+    public String getImageFileName() {
+        return imageFileName;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
+    public void setImageFileName(String imageFileName) {
+        this.imageFileName = imageFileName;
     }
 }
-
 

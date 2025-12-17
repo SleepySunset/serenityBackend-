@@ -6,3 +6,5 @@ org\example\controller\ProductController.class
 org\example\repository\ProductRepository.class
 org\example\repository\UserRepository.class
 org\example\Main.class
+org\example\service\ProductService.class
+org\example\service\UserService.class

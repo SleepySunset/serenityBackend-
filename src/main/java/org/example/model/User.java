@@ -1,28 +1,18 @@
 package org.example.model;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "users")
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    @Column(unique = true, nullable = false)
     private String email;
-
-    @Column(nullable = false)
     private String password;
-
-    @Column(nullable = false)
     private String name;
+    private static Long idCounter = 1L;
 
     public User() {
     }
 
     public User(String email, String password, String name) {
+        this.id = idCounter++;
         this.email = email;
         this.password = password;
         this.name = name;
@@ -58,6 +48,15 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
 
