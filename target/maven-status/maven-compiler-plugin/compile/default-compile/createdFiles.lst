@@ -1,0 +1,8 @@
+org\example\model\User.class
+org\example\controller\AuthController.class
+org\example\model\Product.class
+org\example\DataLoader.class
+org\example\controller\ProductController.class
+org\example\repository\ProductRepository.class
+org\example\repository\UserRepository.class
+org\example\Main.class
