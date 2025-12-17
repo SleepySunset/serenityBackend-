@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.nio.file.Files;
 import java.util.List;
 
 @RestController
@@ -81,7 +80,7 @@ public class ProductController {
 
         try {
             ClassPathResource imageResource = new ClassPathResource("static/" + imageFileName);
-            byte[] imageBytes = Files.readAllBytes(imageResource.getFile().toPath());
+            byte[] imageBytes = imageResource.getInputStream().readAllBytes();
             return ResponseEntity.ok(imageBytes);
         } catch (IOException e) {
             return ResponseEntity.notFound().build();
